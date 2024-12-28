@@ -6,6 +6,6 @@ const router = express.Router();
 router.route('/register/').post(userRegister);
 router.route('/login/').post(authentic,userLogin)
 router.route('/myprofile').get(authentic,myProfile)
-router.route('/alluser').get(getAllUser)
+router.route('/alluser').get(authentic,authorizedRoles("admin"),getAllUser)
 
 module.exports = router
