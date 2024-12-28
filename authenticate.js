@@ -14,3 +14,16 @@ exports.authentic=async(req,res,next)=>{
     req.user =await User.findById(decode.id)
     next()
 }
+
+exports.authorizedRoles =(...roles)=>{
+    return(req,res,next)=>{
+        const userRol = req.body.role
+        if(!roles.includes(userRol)){
+            return res.status(400).json({
+                message:"Role not access"
+            })
+        }else{
+            next()
+            }
+        }
+    }

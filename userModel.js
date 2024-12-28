@@ -21,6 +21,10 @@ const userSchema =new mongoose.Schema({
         required:true,
         maxLenght:[6,'char must be 6'],
         select:false
+    },
+    role:{
+        type:String, 
+        default:"user"
     }
 })
 
